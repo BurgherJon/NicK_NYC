@@ -1,0 +1,74 @@
+# Files NOT uploaded to Vertex AI when `adk deploy agent_engine` runs.
+# Same syntax as .gitignore.
+
+# Python virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python cache
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Secrets and local config — never ship to the cloud
+.env
+.env.*
+credentials/
+*-sa-key.json
+*-key.json
+*service-account*.json
+*credentials*.json
+!requirements.txt
+
+# Git
+.git
+.git/
+.git/**
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Other ignore files
+.gcloudignore
+
+# Terraform (never goes to the Reasoning Engine container)
+terraform/
+.terraform/
+**/.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# Template-maintainer files (in case the user kept them)
+test.md
+MAINTAINER_SETUP.md
+.readme_template_post_setup.md
+
+# Operator scripts (not needed at runtime)
+get_started_linux.sh
+deploy_and_update.sh
+register_agent.py
+
+# Docs (don't bloat the container)
+README.md
+AGENTS.md
+CONTRIBUTING.md
+TRADEMARK.md
+LICENSE.txt
+THIRD_PARTY_LICENSES
+.github/

@@ -1,0 +1,59 @@
+# Third-Party Licenses
+
+The Comites.ai Agent Template includes or installs the following third-party dependencies. Their licenses apply to those components; this template as a whole is licensed under the MIT License (see LICENSE.txt).
+
+## Apache License 2.0
+
+### google-cloud-firestore
+- Source: https://github.com/googleapis/python-firestore
+- License: Apache-2.0
+
+### google-cloud-aiplatform
+- Source: https://github.com/googleapis/python-aiplatform
+- License: Apache-2.0
+
+### google-cloud-secret-manager
+- Source: https://github.com/googleapis/python-secret-manager
+- License: Apache-2.0
+
+### google-api-python-client
+- Source: https://github.com/googleapis/google-api-python-client
+- License: Apache-2.0
+
+### google-auth
+- Source: https://github.com/googleapis/google-auth-library-python
+- License: Apache-2.0
+
+### google-auth-oauthlib
+- Source: https://github.com/googleapis/google-auth-library-python-oauthlib
+- License: Apache-2.0
+
+### google-auth-httplib2
+- Source: https://github.com/googleapis/google-auth-library-python-httplib2
+- License: Apache-2.0
+
+### google-genai
+- Source: https://github.com/googleapis/python-genai
+- License: Apache-2.0
+
+### google-adk
+- Source: https://github.com/google/adk-python
+- License: Apache-2.0
+
+## MIT License
+
+### MCP (Model Context Protocol)
+- Source: https://github.com/modelcontextprotocol/python-sdk
+- License: MIT
+
+## BSD 3-Clause License
+
+### python-dotenv
+- Source: https://github.com/theskumar/python-dotenv
+- License: BSD-3-Clause
+
+## Notes
+
+This list reflects the direct dependencies in `requirements.txt`. Transitive dependencies pulled in by `pip install -r requirements.txt` are governed by their own licenses; run `pip-licenses` in a venv with the template's dependencies installed for a full audit.
+
+The Vertex AI Agent Engine runtime that hosts your deployed agent is provided by Google Cloud and governed by [Google Cloud's terms of service](https://cloud.google.com/terms).

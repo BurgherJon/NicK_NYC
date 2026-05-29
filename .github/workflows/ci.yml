@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  shell-lint:
+    name: Shell lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: bash syntax check
+        run: |
+          for f in *.sh; do
+            [ -f "$f" ] && bash -n "$f"
+          done
+
+      - name: shellcheck
+        run: |
+          if ls *.sh >/dev/null 2>&1; then
+            shellcheck -S error *.sh
+          fi
+
+  terraform-lint:
+    name: Terraform lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.0"
+
+      - name: terraform fmt
+        run: terraform fmt -check -recursive terraform/
+
+  python-syntax:
+    name: Python syntax
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: py_compile
+        run: |
+          python -m py_compile \
+            agent.py \
+            __init__.py \
+            custom_functions.py \
+            custom_agents.py \
+            secret_utilities.py \
+            register_agent.py
