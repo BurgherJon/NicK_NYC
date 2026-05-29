@@ -37,10 +37,10 @@ terraform {
     }
   }
 
-  # backend "gcs" {
-  #   bucket = "YOUR_PROJECT_ID-tfstate"
-  #   prefix = "agent/state"
-  # }
+  backend "gcs" {
+    bucket = "agent-demo-497222-tfstate"
+    prefix = "agent/state"
+  }
 }
 
 provider "google" {

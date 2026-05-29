@@ -194,23 +194,23 @@ resource "google_storage_bucket_iam_member" "engine_staging_reader" {
 # (get_started_linux.sh does this for you when you select Slack.)
 # ==============================================================================
 
-# resource "google_secret_manager_secret" "slack_bot_token" {
-#   project   = var.project_id
-#   secret_id = "${var.bot_account_id}-slack-token"
-#
-#   replication {
-#     auto {}
-#   }
-#
-#   depends_on = [google_project_service.secretmanager]
-# }
-#
-# resource "google_secret_manager_secret_iam_member" "slack_token_forum_accessor" {
-#   project   = var.project_id
-#   secret_id = google_secret_manager_secret.slack_bot_token.secret_id
-#   role      = "roles/secretmanager.secretAccessor"
-#   member    = "serviceAccount:${local.forum_runtime_sa}"
-# }
+resource "google_secret_manager_secret" "slack_bot_token" {
+  project   = var.project_id
+  secret_id = "${var.bot_account_id}-slack-token"
+
+  replication {
+    auto {}
+  }
+
+  depends_on = [google_project_service.secretmanager]
+}
+
+resource "google_secret_manager_secret_iam_member" "slack_token_forum_accessor" {
+  project   = var.project_id
+  secret_id = google_secret_manager_secret.slack_bot_token.secret_id
+  role      = "roles/secretmanager.secretAccessor"
+  member    = "serviceAccount:${local.forum_runtime_sa}"
+}
 
 # ==============================================================================
 # SECTION 3: GOOGLE CHAT
