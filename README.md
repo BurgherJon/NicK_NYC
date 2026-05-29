@@ -127,7 +127,7 @@ After that, the repo is about *your* agent. Edit `agent.py` with your real promp
 │   ├── terraform.tfvars.example
 │   ├── providers.tf          # GCS backend wired by get_started
 │   └── README.md
-├── LICENSE.txt               # MIT
+├── NOTICE                    # Attribution to the Comites.ai Agent Template
 ├── TRADEMARK.md
 ├── THIRD_PARTY_LICENSES
 ├── CONTRIBUTING.md           # CLA flow (same as The Forum)
@@ -229,9 +229,9 @@ Both `MAINTAINER_SETUP.md` and `test.md` are deleted by `get_started_linux.sh` s
 
 ## License
 
-MIT. See [LICENSE.txt](LICENSE.txt) and [TRADEMARK.md](TRADEMARK.md). The template's MIT license means you can use, modify, and redistribute it freely — including as the basis for closed-source agents. The trademark policy in `TRADEMARK.md` still applies separately: you can't name your project "Comites", "The Forum", or anything that implies it's a Comites.ai product.
+All rights reserved. This project does not ship an open-source license.
 
-(Note: [The Forum](https://github.com/Comites-ai/the-forum) itself is AGPL-3.0 — a deliberate choice for a deployed service. This template is permissive scaffolding, so picking the same license made less sense.)
+Built on the **Comites.ai Agent Template**, which is distributed under the MIT License. The template's original copyright and permission notice are retained in [NOTICE](NOTICE) as attribution. The Comites.ai trademark policy still applies separately: this project is not affiliated with, endorsed by, or a product of Comites.ai.
 
 ## Acknowledgements
 
