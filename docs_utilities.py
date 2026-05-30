@@ -34,6 +34,7 @@ What this module is NOT
   one-shot calls suitable for memory documents under a few thousand
   words. For larger docs, use the Docs API directly.
 """
+import os
 from typing import Any, Dict, Optional
 
 import google.auth
@@ -64,10 +65,21 @@ class GoogleDocsConnector:
     def __init__(self, credentials: Optional[Credentials] = None):
         if credentials is None:
             # ADC: returns whichever identity is configured in the runtime
-            # environment (compute SA on Reasoning Engine, gcloud user
-            # locally). The returned project_id is ignored — Docs API
-            # doesn't care about project.
+            # environment (per-agent SA on the Reasoning Engine, gcloud user
+            # locally).
             credentials, _ = google.auth.default(scopes=_DOCS_SCOPES)
+
+        # Pin the billing/quota project for Docs API calls to this agent's own
+        # project. On the Reasoning Engine the default quota project resolves to
+        # the Forum project (where the engine physically runs), where the
+        # per-agent SA has no serviceusage.services.use — which fails the Docs
+        # call with 403 USER_PROJECT_DENIED before doc-level access is ever
+        # checked. The agent's own project has the Docs/Drive APIs enabled and
+        # grants the SA serviceUsageConsumer, so quota it there.
+        quota_project = os.environ.get("AGENT_PROJECT_ID")
+        if quota_project and hasattr(credentials, "with_quota_project"):
+            credentials = credentials.with_quota_project(quota_project)
+
         self._credentials = credentials
         self._docs_service = build("docs", "v1", credentials=credentials)
 
