@@ -43,7 +43,7 @@ if [[ -f "${SCRIPT_DIR}/.env" ]]; then
     set +a
 else
     echo "ERROR: .env not found at ${SCRIPT_DIR}/.env"
-    echo "Run ./get_started_linux.sh to generate it, or copy .env.example to .env and edit."
+    echo "Copy .env.example to .env and fill it in."
     exit 1
 fi
 
@@ -67,15 +67,13 @@ AGENT_DIR="${SCRIPT_DIR}"
 
 # Hard-fail if the SA-assignment config is missing — without it the engine
 # silently inherits the Forum's compute SA (shared with every other agent)
-# and per-agent secret/doc isolation breaks. get_started_linux.sh generates
-# this file; if it's gone, something went wrong.
+# and per-agent secret/doc isolation breaks.
 if [[ ! -f "${SCRIPT_DIR}/.agent_engine_config.json" ]]; then
     echo "ERROR: .agent_engine_config.json missing in ${SCRIPT_DIR}."
     echo "  Without this file the deployed engine would run as the Forum's"
     echo "  default compute SA instead of this agent's per-agent SA, and"
     echo "  every other agent's per-doc / per-secret IAM would apply to it."
-    echo "  Re-run ./get_started_linux.sh to regenerate it, or recreate from"
-    echo "  the template at the same path."
+    echo "  Restore it from git at the same path."
     exit 1
 fi
 

@@ -29,16 +29,10 @@ terraform
 *.tfstate
 *.tfstate.*
 .terraform.lock.hcl
-test.md
-MAINTAINER_SETUP.md
-.readme_template_post_setup.md
-get_started_linux.sh
 deploy_and_update.sh
 register_agent.py
 README.md
 AGENTS.md
-CONTRIBUTING.md
-TRADEMARK.md
-LICENSE.txt
+NOTICE
 THIRD_PARTY_LICENSES
 .github

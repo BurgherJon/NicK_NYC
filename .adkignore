@@ -54,21 +54,13 @@ terraform/
 *.tfstate.*
 .terraform.lock.hcl
 
-# Template-maintainer files (in case the user kept them)
-test.md
-MAINTAINER_SETUP.md
-.readme_template_post_setup.md
-
 # Operator scripts (not needed at runtime)
-get_started_linux.sh
 deploy_and_update.sh
 register_agent.py
 
 # Docs (don't bloat the container)
 README.md
 AGENTS.md
-CONTRIBUTING.md
-TRADEMARK.md
-LICENSE.txt
+NOTICE
 THIRD_PARTY_LICENSES
 .github/
